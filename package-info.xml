@@ -12,8 +12,7 @@
 [/center]
 [hr]
 [b][size=10pt][u]Introduction[/u][/size][/b]
-This mod allows the user to hide any topic from the board index and message index views.  It also allows the user to show the topic again, both from the topic display and the message index views.
-
+This mod disallows users to use the forgot password functionality with a username for security reasons. Users are required to use an email address to reset their password. 
 [color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
 Copyright (c) 2016, Colin Schoen
 All rights reserved.
