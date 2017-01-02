@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>Colin:Colin:ForgotPass-Email-Only</id>
+	<version>1.0</version>
+	<info>[hr]
+[center][color=blue][size=14pt][b]Forgot Password Email Only v1.0[/b][/size][/color]
+[url=http://www.simplemachines.org/community/index.php?action=profile;u=328403][b]By Colin[/b][/url]
+[/center]
+[hr]
+[b][size=10pt][u]Introduction[/u][/size][/b]
+This mod allows the user to hide any topic from the board index and message index views.  It also allows the user to show the topic again, both from the topic display and the message index views.
+
+[color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
+Copyright (c) 2016, Colin Schoen
+All rights reserved.
+
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/</info>
+	<homepage>http://colinschoen.me</homepage>
+	<file name="$sourcedir/Reminder.php">
+		<operation>
+			<search position="replace" whitespace="loose"><![CDATA[
+    $request = $smcFunc['db_query']('', '
+        SELECT id_member, real_name, member_name, email_address, is_activated, validation_code, lngfile, openid_uri, secret_question
+        FROM {db_prefix}members
+        WHERE ' . $where . '
+        LIMIT 1',
+        array_merge($where_params, array(
+        ))
+    );
+]]></search>
+			<add><![CDATA[
+  //  $request = $smcFunc['db_query']('', '
+  //      SELECT id_member, real_name, member_name, email_address, is_activated, validation_code, lngfile, openid_uri, secret_question
+  //      FROM {db_prefix}members
+  //      WHERE ' . $where . '
+  //      LIMIT 1',
+  //      array_merge($where_params, array(
+  //      ))
+  //  );
+]]></add>
+		</operation>
+		<operation>
+			<search position="replace" whitespace="loose"><![CDATA[
+ if ($smcFunc['db_num_rows']($request) == 0 && empty($_REQUEST['uid']))
+]]></search>
+			<add><![CDATA[
+    if (empty($_REQUEST['uid']))
+]]></add>
+		</operation>
+	</file>
+	<file name="$themedir/languages/Profile.english.php">
+		<operation>
+			<search position="replace" whitespace="loose"><![CDATA[
+$txt['user_email'] = 'Username/Email';
+]]></search>
+			<add><![CDATA[
+$txt['user_email'] = 'Email';
+]]></add>
+		</operation>
+	</file>
+</modification>

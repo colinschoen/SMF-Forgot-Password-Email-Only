@@ -1,19 +1,44 @@
 <?xml version="1.0"?>
 <!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
-
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
-	<id>Colin:ForgotPasswordEmailOnly</id>
-	<name>Forgot Password Email Only</name>
+	<name>Forgot Password Use Email Only</name>
+	<id>Colin:Forgot-Pass-Email-Only</id>
 	<type>modification</type>
 	<version>1.0</version>
+	<install>
+		<readme type="inline" parsebbc="true">[hr]
+[center][color=blue][size=14pt][b]Forgot Password Email Only v1.0[/b][/size][/color]
+[url=http://www.simplemachines.org/community/index.php?action=profile;u=328403][b]By Colin[/b][/url]
+[/center]
+[hr]
+[b][size=10pt][u]Introduction[/u][/size][/b]
+This mod allows the user to hide any topic from the board index and message index views.  It also allows the user to show the topic again, both from the topic display and the message index views.
 
-	<install for="2.0 - 2.0.99">
-		<readme parsebbc="true">readme.txt</readme>
-		<modification>install_20x.xml</modification>
-		<modification>language_english.xml</modification>
+[color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
+Copyright (c) 2016, Colin Schoen
+All rights reserved.
+
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/</readme>
+		<modification type="file">Forgot-Pass-Email-Only.xml</modification>
 	</install>
-	<uninstall for="2.0 - 2.0.99">
-		<modification reverse="true">install_20x.xml</modification>
-		<modification reverse="true">language_english.xml</modification>
+	<uninstall>
+		<readme type="inline">[hr]
+[center][color=blue][size=14pt][b]Forgot Password Email Only v1.0[/b][/size][/color]
+[url=http://www.simplemachines.org/community/index.php?action=profile;u=328403][b]By Colin[/b][/url]
+[/center]
+[hr]
+[b][size=10pt][u]Introduction[/u][/size][/b]
+This mod allows the user to hide any topic from the board index and message index views.  It also allows the user to show the topic again, both from the topic display and the message index views.
+
+[color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
+Copyright (c) 2016, Colin Schoen
+All rights reserved.
+
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/</readme>
+		<modification type="file" reverse="true">Forgot-Pass-Email-Only.xml</modification>
 	</uninstall>
 </package-info>
