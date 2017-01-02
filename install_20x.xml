@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<id>Colin:ForgotPasswordEmailOnly</id>
+<name>ForgotPasswordEmailOnly</name>
+<version>1.0</version>
+
+<file name="$sourcedir/MessageIndex.php">
+	<!-- MessageIndex function -->
+	<operation>
+		<search position="after"><![CDATA[t.id_board = {int:current_board}' . (!$modSettings['postmod_active'] || $context['can_approve_posts'] ? '' : ']]></search>
+		<add><![CDATA[t.id_topic NOT IN ({array_int:hide_topics}) AND 
+				]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA['id_member_guest' => 0,]]></search>
+		<add><![CDATA[
+				'hide_topics' => $_SESSION['hide_topics'],]]></add>
+	</operation>
+	<operation>
+		<search position="after"><![CDATA[' . ($pre_query ? 't.id_topic IN ({array_int:topic_list})' : 't.id_board = {int:current_board}') . (!$modSettings['postmod_active'] || $context['can_approve_posts'] ? '' : ']]></search>
+		<add><![CDATA[(t.id_topic NOT IN ({array_int:hide_topics}))
+				AND ]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA['find_set_topics' => implode(',', $topic_ids),]]></search>
+		<add><![CDATA[
+				'hide_topics' => $_SESSION['hide_topics'],]]></add>
+	</operation>
+</file>
+<file name="$sourcedir/Subs-BoardIndex.php">
+	<!-- getBoardIndex function -->
+	<operation>
+		<search position="before"><![CDATA[b.id_board, b.name AS board_name, b.description,]]></search>
+		<add><![CDATA[ t.id_topic,]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA[LEFT JOIN {db_prefix}categories AS c ON (c.id_cat = b.id_cat)' : '') . ']]></search>
+		<add><![CDATA[
+			LEFT JOIN {db_prefix}topics AS t ON (t.id_last_msg = b.id_last_msg)]]></add>
+	</operation>
+	<operation>
+		<search position="after"><![CDATA[// Perhaps we are ignoring this board?]]></search>
+		<add><![CDATA[// Perform any "Hide Topic From View" processing we need to do here:
+		HTFV_Process($row_board);
+		
+		]]></add>
+	</operation>
+</file>
+</modification>
