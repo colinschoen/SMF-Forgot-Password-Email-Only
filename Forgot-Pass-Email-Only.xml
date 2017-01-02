@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
-	<id>Colin:Colin:ForgotPass-Email-Only</id>
+	<id>Colin:ForgotPass-Email-Only</id>
 	<version>1.0</version>
 	<info>[hr]
 [center][color=blue][size=14pt][b]Forgot Password Email Only v1.0[/b][/size][/color]
